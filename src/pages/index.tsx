@@ -42,7 +42,7 @@ function addHighlightText(element: any) {
 }
 
 const Home: NextPage = () => {
-  const [file, setFile] = useState<File | string>('/github-privacy.pdf');
+  const [file, setFile] = useState<File | string>();
   const disabledUpload = false;
   const [numPages, setNumPages] = useState(null);
   const [loading, setLoading] = useState(false);
