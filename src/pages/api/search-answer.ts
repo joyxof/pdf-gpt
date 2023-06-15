@@ -20,7 +20,7 @@ const handler = async (req: Request): Promise<Response> => {
   }
 };
 
-const prompt = `
+const prompt: string = `
   You are aknowledgeable assistant that accurately \
   answers queries. Use the text below, delimited by triple quotes \
   extract to form your answer, but avoid copying word-for-word \
