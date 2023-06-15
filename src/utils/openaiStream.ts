@@ -12,17 +12,19 @@ export const OpenAIStream = async (prompt: string, apiKey: string) => {
     },
     method: 'POST',
     body: JSON.stringify({
+      prompt,
+      max_tokens: 512,
       // model: 'gpt-3.5-turbo',
-      messages: [
-        {
-          role: 'system',
-          content: `You are a helpful assistant that accurately answers queries using GitHub Privacy Statement. Use the text provided to form your answer, but avoid copying word-for-word from the context. Try to use your own words when possible. Keep your answer under 5 sentences. Be accurate, helpful, concise, and clear.`
-        },
-        {
-          role: 'user',
-          content: prompt
-        }
-      ],
+      // messages: [
+        // {
+          // role: 'system',
+          // content: `You are a helpful assistant that accurately answers queries using GitHub Privacy Statement. Use the text provided to form your answer, but avoid copying word-for-word from the context. Try to use your own words when possible. Keep your answer under 5 sentences. Be accurate, helpful, concise, and clear.`
+        // },
+        // {
+          // role: 'user',
+          // content: prompt
+        // }
+      // ],
       temperature: 0.1,
       stream: true
     })
