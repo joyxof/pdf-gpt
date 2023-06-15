@@ -20,7 +20,7 @@ const handler = async (req: Request): Promise<Response> => {
   }
 };
 
-const prompt = codeBlock`
+const prompt: string = codeBlock`
   ${oneLine`
     You are aknowledgeable assistant that accurately \
     answers queries. Use the text below, delimited by triple quotes \
