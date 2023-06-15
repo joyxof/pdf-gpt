@@ -15,7 +15,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         'api-key': `Bearer ${apiKey}`
       },
       method: 'POST',
-      body: {
+      data: {
         // model: 'text-embedding-ada-002',
         input
       }
