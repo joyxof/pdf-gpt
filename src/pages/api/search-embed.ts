@@ -9,17 +9,28 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     const input = query.replace(/\n/g, ' ');
 
-    const embedRes = await axios(`${getOpenAIBaseUrl()}redfox2/embeddings?api-version=2023-05-15`, {
+    const embedRes = await fetch(`${getOpenAIBaseUrl()}redfox2/embeddings?api-version=2023-05-15`, {
       headers: {
         'Content-Type': 'application/json',
         'api-key': `Bearer ${apiKey}`
-      },
-      method: 'POST',
-      data: {
-        // model: 'text-embedding-ada-002',
-        input
+       },
+    method: 'POST',
+    body: {
+        input,
       }
-    });
+  });
+    
+    // const embedRes = await axios(`${getOpenAIBaseUrl()}redfox2/embeddings?api-version=2023-05-15`, {
+      // headers: {
+        // 'Content-Type': 'application/json',
+        // 'api-key': `Bearer ${apiKey}`
+      // },
+      // method: 'POST',
+      // data: {
+        // model: 'text-embedding-ada-002',
+        // input
+      // }
+    // });
 
     const { embedding } = embedRes.data.data[0];
 
