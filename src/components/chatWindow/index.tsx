@@ -58,9 +58,9 @@ const ChatWindow: FC<ChatWindowProps> = ({ className }) => {
       the query: "${value}" \
       Please Use the text below, delimited by triple quotes extract \
       to form your answer, but avoid copying word-for-word from \
-      the context. outputted in markdown format. If you are unsure \
-      and the answer is not explicitly written in the documentation, \
-      say "Sorry, I don't know how to help with that."
+      the context. outputted in markdown format. Please answer in Chinese. \
+      If you are unsure and the answer is not explicitly written \
+      in the documentation, say "Sorry, I don't know." \
       '''${embedRes.data?.map((d: any) => d.content).join('\n\n')}'''
       `;
 
