@@ -54,9 +54,14 @@ const ChatWindow: FC<ChatWindowProps> = ({ className }) => {
       });
 
       const prompt = `
-      Use the following text to provide an answer to the query: "${value}"
-
-      ${embedRes.data?.map((d: any) => d.content).join('\n\n')}
+      You are a knowledgeable assistant that accurately answers \
+      the query: "${value}" \
+      Please Use the text below, delimited by triple quotes extract \
+      to form your answer, but avoid copying word-for-word from \
+      the context. outputted in markdown format. If you are unsure \
+      and the answer is not explicitly written in the documentation, \
+      say "Sorry, I don't know how to help with that."
+      '''${embedRes.data?.map((d: any) => d.content).join('\n\n')}'''
       `;
 
       const answerResponse = await fetch('/api/search-answer', {
