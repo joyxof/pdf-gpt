@@ -7,22 +7,32 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const { sentenceList, apiKey } = req.body as any;
 
-    const configuration = new Configuration({
-      apiKey,
-      basePath: `${getOpenAIBaseUrl()}/v1`  || undefined
-    });
-    const openai = new OpenAIApi(configuration);
+    // const configuration = new Configuration({
+      // apiKey,
+      // basePath: `${getOpenAIBaseUrl()}/v1`  || undefined
+    // });
+    // const openai = new OpenAIApi(configuration);
 
     for (let i = 0; i < sentenceList.length; i++) {
       const chunk = sentenceList[i];
       const { content, content_length, content_tokens, page_num } = chunk;
 
-      const embeddingResponse = await openai.createEmbedding({
-        model: 'text-embedding-ada-002',
-        input: content
-      });
+      const embeddingResponse = await fetch('https://joyxof.openai.azure.com/openai/deployments/redfox2/embeddings?api-version=2023-05-15', {
+        method: 'POST',
+        headers: {
+          'api-key': `Bearer ${apiKey}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          input: content,
+        }),
+      })
+      // const embeddingResponse = await openai.createEmbedding({
+        // model: 'text-embedding-ada-002',
+        // input: content
+      // });
 
-      const [{ embedding }] = embeddingResponse.data.data;
+      const [{ embedding }] = embeddingResponse.json();
 
       const { error } = await supabaseClient
         .from('chatgpt')
