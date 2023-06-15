@@ -11,8 +11,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     const embedRes = await fetch(`${getOpenAIBaseUrl()}redfox2/embeddings?api-version=2023-05-15`, {
       headers: {
+        'api-key': apiKey,
         'Content-Type': 'application/json',
-        'api-key': `Bearer ${apiKey}`
        },
       method: 'POST',
       body: JSON.stringify({
