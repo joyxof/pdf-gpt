@@ -1,5 +1,5 @@
 import { OpenAIStream } from '../../utils/openaiStream';
-import { codeBlock, oneLine } from 'common-tags'
+
 export const config = {
   runtime: 'edge'
 };
@@ -20,16 +20,13 @@ const handler = async (req: Request): Promise<Response> => {
   }
 };
 
-const prompt: string = codeBlock`
-  ${oneLine`
+const prompt: string = `
     You are aknowledgeable assistant that accurately \
     answers queries. Use the text below, delimited by triple quotes \
     extract to form your answer, but avoid copying word-for-word \
     from the context.outputted in markdown format. If you are unsure \
     and the answer is not explicitly written in the documentation, \
     say "Sorry, I don't know how to help with that."
-  `}
-
   '''${prompt}'''
   `;
 export default handler;
