@@ -14,8 +14,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         'Content-Type': 'application/json',
         'api-key': `Bearer ${apiKey}`
        },
-    method: 'POST',
-    body: JSON.stringify({
+      method: 'POST',
+      body: JSON.stringify({
         input: query.replace(/\n/g, ' '),
       }),
   });
