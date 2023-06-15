@@ -16,7 +16,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
        },
     method: 'POST',
     body: JSON.stringify({
-        input: sanitizedQuery.replaceAll('\n', ' '),
+        input: query.replace(/\n/g, ' '),
       }),
   });
     
