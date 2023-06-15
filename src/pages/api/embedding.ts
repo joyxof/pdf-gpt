@@ -32,7 +32,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         // input: content
       // });
 
-      const [{ embedding }] = embeddingResponse.json();
+      const {
+        data: [{ embedding }],
+      } = await embeddingResponse.json()
+      // const [{ embedding }] = embeddingResponse.json();
 
       const { error } = await supabaseClient
         .from('chatgpt')
