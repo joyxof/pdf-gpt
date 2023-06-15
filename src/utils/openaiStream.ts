@@ -5,10 +5,10 @@ export const OpenAIStream = async (prompt: string, apiKey: string) => {
   const encoder = new TextEncoder();
   const decoder = new TextDecoder();
 
-  const res = await fetch('https://joyxof.openai.azure.com/openai/deployments/redfox3/completions?api-version=2023-05-15', {
+  const res = await fetch('https://joyxof.openai.azure.com/openai/deployments/redfox1/completions?api-version=2023-05-15', {
     headers: {
+      'api-key': apiKey,
       'Content-Type': 'application/json',
-      'api-key': apiKey
     },
     method: 'POST',
     body: JSON.stringify({
