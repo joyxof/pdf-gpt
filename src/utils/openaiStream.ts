@@ -5,14 +5,14 @@ export const OpenAIStream = async (prompt: string, apiKey: string) => {
   const encoder = new TextEncoder();
   const decoder = new TextDecoder();
 
-  const res = await fetch(`${getOpenAIBaseUrl()}/v1/chat/completions`, {
+  const res = await fetch(`${getOpenAIBaseUrl()}redfox3/completions?api-version=2023-05-15`, {
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${apiKey}`
+      'api-key': `Bearer ${apiKey}`
     },
     method: 'POST',
     body: JSON.stringify({
-      model: 'gpt-3.5-turbo',
+      // model: 'gpt-3.5-turbo',
       messages: [
         {
           role: 'system',
