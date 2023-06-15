@@ -9,14 +9,14 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     const input = query.replace(/\n/g, ' ');
 
-    const embedRes = await axios(`${getOpenAIBaseUrl()}/v1/embeddings`, {
+    const embedRes = await axios(`${getOpenAIBaseUrl()}redfox2/embeddings?api-version=2023-05-15`, {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${apiKey}`
+        'api-key': `Bearer ${apiKey}`
       },
       method: 'POST',
-      data: {
-        model: 'text-embedding-ada-002',
+      body: {
+        // model: 'text-embedding-ada-002',
         input
       }
     });
