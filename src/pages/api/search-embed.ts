@@ -32,7 +32,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       // }
     // });
 
-    const { embedding } = await embedRes.json();
+    const {
+      data: [{ embedding }],
+    } = await embeddingResponse.json()
+    // const { embedding } = await embedRes.json();
 
     const { data: chunks, error } = await supabaseClient.rpc('chatgpt_search', {
       query_embedding: embedding,
