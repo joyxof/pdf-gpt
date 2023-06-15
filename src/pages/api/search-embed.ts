@@ -18,7 +18,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       body: JSON.stringify({
         input,
       }),
-  });
+    });
     
     // const embedRes = await axios(`${getOpenAIBaseUrl()}redfox2/embeddings?api-version=2023-05-15`, {
       // headers: {
