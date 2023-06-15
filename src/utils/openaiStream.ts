@@ -1,20 +1,18 @@
 import { createParser, ParsedEvent, ReconnectInterval } from 'eventsource-parser';
 import getOpenAIBaseUrl from './getOpenAIBaseUrl';
 
+const prompt = `
+  You are aknowledgeable assistant that accurately \
+  answers queries. Use the text below, delimited by triple quotes \
+  extract to form your answer, but avoid copying word-for-word \
+  from the context.outputted in markdown format. If you are unsure \
+  and the answer is not explicitly written in the documentation, \
+  say "Sorry, I don't know how to help with that."
+  '''${prompt}'''
+  `;
 export const OpenAIStream = async (prompt: string, apiKey: string) => {
   const encoder = new TextEncoder();
   const decoder = new TextDecoder();
-
-  
-  const prompt = `
-      You are aknowledgeable assistant that accurately \
-      answers queries. Use the text below, delimited by triple quotes \
-      extract to form your answer, but avoid copying word-for-word \
-      from the context.outputted in markdown format. If you are unsure \
-      and the answer is not explicitly written in the documentation, \
-      say "Sorry, I don't know how to help with that."
-      '''${prompt}'''
-      `;
 
   const res = await fetch('https://joyxof.openai.azure.com/openai/deployments/redfox1/completions?api-version=2023-05-15', {
     headers: {
