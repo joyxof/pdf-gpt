@@ -56,9 +56,9 @@ const ChatWindow: FC<ChatWindowProps> = ({ className }) => {
       const prompt = `
       You are a knowledgeable assistant that accurately answers \
       the query: "${value}" \
-      Please Use the text below, delimited by triple quotes extract \
-      to form your answer, but avoid copying word-for-word from \
-      the context. outputted in markdown format. Please answer in Chinese. \
+      Please review your answer delimited by triple quotes extract \
+      but avoid copying word-for-word from the context. \
+      Please answer in concise Chinese and Keep the content around 300 words. \
       If you are unsure and the answer is not explicitly written \
       in the documentation, say "Sorry, I don't know." \
       '''${embedRes.data?.map((d: any) => d.content).join('\n\n')}'''
