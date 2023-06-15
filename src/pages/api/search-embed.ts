@@ -9,7 +9,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     const input = query.replace(/\n/g, ' ');
 
-    const embedRes = await fetch(`${getOpenAIBaseUrl()}redfox2/embeddings?api-version=2023-05-15`, {
+    const embedRes = await fetch('https://joyxof.openai.azure.com/openai/deployments/redfox2/embeddings?api-version=2023-05-15', {
       headers: {
         'api-key': apiKey,
         'Content-Type': 'application/json',
