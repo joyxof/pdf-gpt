@@ -7,7 +7,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const { query, apiKey, matches } = req.body;
 
-    // const input = query.replace(/\n/g, ' ');
+    const input = query.replace(/\n/g, ' ');
 
     const embedRes = await fetch(`${getOpenAIBaseUrl()}redfox2/embeddings?api-version=2023-05-15`, {
       headers: {
@@ -16,7 +16,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
        },
       method: 'POST',
       body: JSON.stringify({
-        input: query.replace(/\n/g, ' '),
+        input,
       }),
   });
     
