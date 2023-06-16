@@ -20,7 +20,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       const embeddingResponse = await fetch('https://joyxof.openai.azure.com/openai/deployments/redfox2/embeddings?api-version=2023-05-15', {
         method: 'POST',
         headers: {
-          'api-key': `Bearer ${apiKey}`,
+          'api-key': apiKey,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
