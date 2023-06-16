@@ -53,7 +53,7 @@ const ChatWindow: FC<ChatWindowProps> = ({ className }) => {
         data: { query: value, apiKey: settings.current?.apiKey, matches: 5 }
       });
 
-      const Prompt = `
+      const prompt = `
       Use the following text to provide an answer to the query: "${value}"
 
       ${embedRes.data?.map((d: any) => d.content).join('\n\n')}
