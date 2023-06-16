@@ -51,7 +51,7 @@ export const OpenAIStream = async (prompt: string, apiKey: string) => {
 
           try {
             const json = JSON.parse(data);
-            const text = json.choices[0].message.content;
+            const text = json.choices[0].message["content"];
             const queue = encoder.encode(text);
             controller.enqueue(queue);
           } catch (e) {
