@@ -54,14 +54,9 @@ const ChatWindow: FC<ChatWindowProps> = ({ className }) => {
       });
 
       const prompt = `
-      You are a knowledgeable assistant that accurately answers \
-      the query: "${value}" \
-      Please review your answer delimited by triple quotes extract \
-      but avoid copying word-for-word from the context. \
-      Please answer in concise Chinese and Keep the content around 300 words. \
-      If you are unsure and the answer is not explicitly written \
-      in the documentation, say "Sorry, I don't know." \
-      '''${embedRes.data?.map((d: any) => d.content).join('\n\n')}'''
+      Use the following text to provide an answer to the query: "${value}"
+
+      ${embedRes.data?.map((d: any) => d.content).join('\n\n')}
       `;
 
       const answerResponse = await fetch('/api/search-answer', {
