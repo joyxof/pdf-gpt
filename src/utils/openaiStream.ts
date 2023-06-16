@@ -13,7 +13,6 @@ export const OpenAIStream = async (prompt: string, apiKey: string) => {
     },
     method: 'POST',
     body: JSON.stringify({
-      prompt,
       // model: 'gpt-3.5-turbo',
       messages: [
         {
