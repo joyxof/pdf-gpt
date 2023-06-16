@@ -1,7 +1,7 @@
 import { createParser, ParsedEvent, ReconnectInterval } from 'eventsource-parser';
 import getOpenAIBaseUrl from './getOpenAIBaseUrl';
 
-export const OpenAIStream = async (Prompt: string, apiKey: string) => {
+export const OpenAIStream = async (prompt: string, apiKey: string) => {
   const encoder = new TextEncoder();
   const decoder = new TextDecoder();
 
@@ -14,7 +14,7 @@ export const OpenAIStream = async (Prompt: string, apiKey: string) => {
     // '''${Prompt}'''
     // `;
   
-  const res = await fetch('https://joyxof.openai.azure.com/openai/deployments/redfox1/chat/completions?api-version=2023-05-15', {
+  const res = await fetch('https://joyxof.openai.azure.com/openai/deployments/redfox1/chat/completions?api-version=2023-03-15-preview', {
     headers: {
       'api-key': apiKey,
       'Content-Type': 'application/json',
