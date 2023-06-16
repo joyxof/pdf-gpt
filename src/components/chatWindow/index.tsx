@@ -64,7 +64,7 @@ const ChatWindow: FC<ChatWindowProps> = ({ className }) => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ Prompt, apiKey: settings.current?.apiKey })
+        body: JSON.stringify({ prompt, apiKey: settings.current?.apiKey })
       });
       setLoading(false);
 
