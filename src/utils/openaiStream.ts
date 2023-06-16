@@ -22,8 +22,8 @@ export const OpenAIStream = async (prompt: string, apiKey: string) => {
             answers queries. Use the text provided to form your answer, \
             but avoid copying word-for-word from the context.Please \
             answer in concise Chinese and keep it within 400 words. \
-            If you are unsure and the answer is not explicitly written \
-            in the text, say "Sorry, I don't know."'
+            If you are unsure and the answer is not explicitly writtenin the text, \
+            say "Sorry, I don't know."'
         }
         {
           role: 'user',
