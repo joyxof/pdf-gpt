@@ -25,7 +25,7 @@ export const OpenAIStream = async (prompt: string, apiKey: string) => {
         `},
         {
           role: 'user',
-          content: prompt
+          content: prompt,
         }
       ],
       temperature: 0.1,
@@ -51,8 +51,7 @@ export const OpenAIStream = async (prompt: string, apiKey: string) => {
 
           try {
             const json = JSON.parse(data);
-            // const text = json.choices[0].text;
-            const text = json.choices[0].messages.content;
+            const text = res.choices[0].message.content;
             const queue = encoder.encode(text);
             controller.enqueue(queue);
           } catch (e) {
