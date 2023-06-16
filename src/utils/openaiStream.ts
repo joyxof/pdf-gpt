@@ -1,19 +1,38 @@
 import { createParser, ParsedEvent, ReconnectInterval } from 'eventsource-parser';
 import getOpenAIBaseUrl from './getOpenAIBaseUrl';
+import { OpenAIClient, AzureKeyCredential } from "@azure/openai";
 
 export const OpenAIStream = async (prompt: string, apiKey: string) => {
   const encoder = new TextEncoder();
   const decoder = new TextDecoder();
 
-  const res = await fetch('https://joyxof.openai.azure.com/openai/deployments/redfox1/completions?api-version=2023-05-15', {
-    headers: {
-      'api-key': apiKey,
-      'Content-Type': 'application/json',
-    },
-    method: 'POST',
-    body: JSON.stringify({
-      prompt,
-      max_tokens: 512,
+  import { OpenAIClient, AzureKeyCredential } from "@azure/openai";
+
+  // 测试azure openai
+  const messages = [
+    { role: "system", content: 'You are aknowledgeable assistant that accurately \
+      answers queries. Use the text provided to form your answer, \
+      but avoid copying word-for-word from the context.Please \
+      answer in concise Chinese and keep it within 400 words. \
+      If you are unsure and the answer is not explicitly written \
+      in the documentation, say "Sorry, I don't know."
+    '},
+    { role: "user", content: prompt },
+   ];
+  
+  const client = new OpenAIClient('https://joyxof.openai.azure.com/', new AzureKeyCredential(apiKey));
+  const deploymentId = "redfox1";
+  const res = await client.getChatCompletions(deploymentId, messages);
+
+  // const res = await fetch('https://joyxof.openai.azure.com/openai/deployments/redfox1/completions?api-version=2023-05-15', {
+    // headers: {
+      // 'api-key': apiKey,
+      // 'Content-Type': 'application/json',
+    // },
+    // method: 'POST',
+    // body: JSON.stringify({
+      // prompt,
+      // max_tokens: 512,
       // model: 'gpt-3.5-turbo',
       // messages: [
         // {
@@ -25,10 +44,10 @@ export const OpenAIStream = async (prompt: string, apiKey: string) => {
           // content: prompt
         // }
       // ],
-      temperature: 0.1,
-      stream: true
-    })
-  });
+      // temperature: 0.1,
+      // stream: true
+    // })
+  // });
 
   if (res.status !== 200) {
     throw new Error('OpenAI API returned an error');
