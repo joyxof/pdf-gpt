@@ -14,7 +14,7 @@ export const OpenAIStream = async (Prompt: string, apiKey: string) => {
     '''${Prompt}'''
     `;
   
-  const res = await fetch('https://joyxof.openai.azure.com/openai/deployments/redfox1/completions?api-version=2023-06-01-preview', {
+  const res = await fetch('https://joyxof.openai.azure.com/openai/deployments/redfox1/completions?api-version=2023-05-15', {
     headers: {
       'api-key': apiKey,
       'Content-Type': 'application/json',
