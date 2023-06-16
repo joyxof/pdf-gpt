@@ -6,7 +6,7 @@ export const OpenAIStream = async (prompt: string, apiKey: string) => {
   const decoder = new TextDecoder();
 
 
-  const res = await fetch('https://joyxof.openai.azure.com/openai/deployments/redfox1/chat/completions?api-version=2023-05-15', {
+  const res = await fetch('https://joyxof.openai.azure.com/openai/deployments/redfox3/chat/completions?api-version=2023-05-15', {
     headers: {
       'api-key': apiKey,
       'Content-Type': 'application/json',
