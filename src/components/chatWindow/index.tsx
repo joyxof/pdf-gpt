@@ -53,7 +53,7 @@ const ChatWindow: FC<ChatWindowProps> = ({ className }) => {
         data: { query: value, apiKey: settings.current?.apiKey, matches: 5 }
       });
 
-      const prompt = `
+      const Prompt = `
       Use the following text to provide an answer to the query: "${value}"
 
       ${embedRes.data?.map((d: any) => d.content).join('\n\n')}
@@ -64,7 +64,7 @@ const ChatWindow: FC<ChatWindowProps> = ({ className }) => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ prompt, apiKey: settings.current?.apiKey })
+        body: JSON.stringify({ Prompt, apiKey: settings.current?.apiKey })
       });
       setLoading(false);
 
