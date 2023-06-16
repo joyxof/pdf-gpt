@@ -15,7 +15,7 @@ export const OpenAIStream = async (prompt: string, apiKey: string) => {
       but avoid copying word-for-word from the context.Please \
       answer in concise Chinese and keep it within 400 words. \
       If you are unsure and the answer is not explicitly written \
-      in the documentation, say "Sorry, I don't know."
+      in the text,say "Sorry, I don't know."
     '},
     { role: "user", content: prompt },
    ];
