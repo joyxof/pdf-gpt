@@ -17,8 +17,12 @@ export const OpenAIStream = async (prompt: string, apiKey: string) => {
       messages: [
         {
           role: 'system',
-          content: `You are aknowledgeable assistant that accurately answers queries. Use the text provided to form your answer.`
-        },
+          content: `You are aknowledgeable assistant that accurately answers queries. \
+            Given the following sections to form your answer, but avoid copying \
+            word-for-word from the context.Please answer in concise Chinese and \
+            keep it within 400 words.If you are unsure and the answer is not \
+            explicitly written in the context, say "Sorry, I don't know." \
+        `},
         {
           role: 'user',
           content: prompt
